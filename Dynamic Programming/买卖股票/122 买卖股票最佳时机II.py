@@ -1,4 +1,4 @@
-#和只能买卖一次区别和共同： 不持有股票的推断是一样的， 持有股票dp[i][0] = max(dp[i][0], dp[i-1][0]-prices[i])
+#本题是可以买卖多次 和只能买卖一次区别和共同： 不持有股票的推断是一样的， 持有股票dp[i][0] = max(dp[i][0], dp[i-1][0]-prices[i])
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         length = len(prices)
