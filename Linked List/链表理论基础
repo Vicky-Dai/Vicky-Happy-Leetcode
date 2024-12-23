@@ -1,0 +1,62 @@
+内存不连续
+
+操作的时间复杂度（对比数组）：
+数组：插入/删除 O(n)  查询O(1)
+链表：插入删除：O(1)  查询O(n) 
+
+class LinkedList:
+    def __init__(self):
+        self.head = None  # 链表的头节点
+
+    # 插入操作
+    def insert(self, data):
+        new_node = Node(data)  # 创建一个新的节点
+        if self.head is None:  # 如果链表为空
+            self.head = new_node  # 将新节点作为头节点
+        else:
+            current = self.head
+            while current.next:  # 找到链表的最后一个节点
+                current = current.next
+            current.next = new_node  # 将新节点添加到最后
+
+    # 删除操作
+    def delete(self, data):
+        if self.head is None:
+            return  # 链表为空，什么也不做
+
+        # 如果删除的是头节点
+        if self.head.data == data:
+            self.head = self.head.next
+            return
+
+        current = self.head
+        while current.next:
+            if current.next.data == data:  # 找到要删除的节点
+                current.next = current.next.next  # 删除节点
+                return
+            current = current.next
+
+    # 查询操作
+    def search(self, data):
+        current = self.head
+        while current:
+            if current.data == data:  # 找到目标数据
+                return True
+            current = current.next
+        return False
+
+    # 打印链表内容
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
+
+因为数组是固定大小的连续内存结构，而链表是动态的节点结构。因此，数组的插入和删除操作的时间复杂度通常要比链表大，因为涉及到元素的移动。如果插入的位置是数组的末尾，插入操作是 
+𝑂(1)
+O(1) 的时间复杂度。你只需将新元素添加到数组的末尾。
+如果插入的位置不是末尾，比如在数组的中间插入，插入操作会是 
+𝑂(𝑛)
+O(n) 的时间复杂度。因为插入元素后，所有从插入位置后面的元素都需要向右移动一位。

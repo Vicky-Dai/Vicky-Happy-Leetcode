@@ -1,7 +1,10 @@
+#时间复杂度 O(logn) 空间复杂度O(1)
+#就用左闭右闭比较好控制
+
 class Solution:
     def search(self, nums: list[int], target: int) -> int:
         left, right = 0, len(nums)-1
-        while left<=right:
+        while left<=right: #左闭右闭 [2,2]也有意义 如果左闭右开[2,2) 就失去了意义
             mid = (left+right)//2
             if nums[mid] == target:
                 return mid
