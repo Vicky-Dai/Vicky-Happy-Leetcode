@@ -1,8 +1,9 @@
 class Solution:
-    def backtracking(self, nums, path, used, result):
-        if len(path) == len(nums):
-            result.append(path[:])
-            return
+    def permute(self, nums):
+        result = []
+        self.backtracking (nums, [], [False]*len(nums), result)
+        return result 
+          
     def backtracking(self, nums, path, used, result):
         if len(path) == len(nums):
             result.append(path[:])

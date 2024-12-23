@@ -1,3 +1,6 @@
+#时间复杂度: O(n)
+#空间复杂度: O(n)
+
 from operator import add, sub, mul
 
 def div(x, y):
@@ -17,3 +20,12 @@ class Solution(object):
                 op1 = stack.pop() #注意顺序 op1 是第一个弹出的操作数，它应该在运算符的左边。
                 stack.append(self.op_map[token](op1, op2))  # 第一个出来的在运算符后面  右开口的栈
         return stack.pop()
+    
+
+""" 如何计算逆波兰表达式？
+计算逆波兰表达式通常使用堆栈（stack）来实现：
+
+从左到右扫描表达式。
+遇到操作数时，将其推入堆栈。
+遇到运算符时，从堆栈中弹出相应的操作数，进行计算，再将结果推回堆栈。
+最终，堆栈中只剩下一个元素，这个元素就是表达式的结果。 """

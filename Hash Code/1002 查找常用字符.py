@@ -8,7 +8,7 @@ class Solution:
             for char in word:
                 freq_arr[ord(char)-ord('a')] += 1
             for i in range(26):
-                freq_min = min(freq_min, freq_arr)
+                freq_min[i] = min(freq_min[i], freq_arr[i])
 
         for i in range(26):
             for _ in range(freq_min[i]):
