@@ -29,6 +29,6 @@ class Solution:
         #处理接下来每个窗口
         for i in range(k, len(nums)):
             que.pop(nums[i-k])
-            que.push(nums[i])
+            que.push(nums[i]) #顺序很重要 先出再进 否则顺序容易出错
             result.append(que.front())
         return result

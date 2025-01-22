@@ -1,4 +1,9 @@
 #递归法
+""" 假设树上一共 n 个节点。
+
+时间复杂度：这里遍历了这棵树，渐进时间复杂度为 O(n)。
+空间复杂度：这里的空间复杂度和递归使用的栈空间有关，这里递归层数不超过 n，故渐进空间复杂度为 O(n)。
+"""
 from TreeNode import TreeNode  #在同一目录下不需要写路径 我把TreeNode文件也放在了BT文件夹下
 
 class Solution:
@@ -9,8 +14,11 @@ class Solution:
     
     def compare(self, left,right):
         #首先排除空节点的情况 一定注意顺序 贸然直入如果为空会出错
-        if left == None and right != None: return False
+        #首先排除空节点的情况
+        if left == None and right != None: return False #注意这里细节：排除空节点的时候不用.val，不然会报错
         elif left != None and right == None: return False
+        elif left == None and right == None: return True
+        #排除了空节点，再排除数值不相同的情况
         elif left.val != right.val: return False
         
         #此时就是：左右节点都不为空，且数值相同的情况

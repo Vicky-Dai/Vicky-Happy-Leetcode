@@ -55,7 +55,7 @@ class Solution:
         
         for char in s:
             if char in pairs:  # 当前字符是右括号 检查的是键
-                if not stack or stack[-1] != pairs[char]:  # 栈为空或栈顶不匹配
+                if not stack or stack[-1] != pairs[char]:  # 栈为空或栈顶不匹配 #注意这里的or！！！！
                     return False
                 stack.pop()  # 匹配成功，弹出栈顶元素
             else:

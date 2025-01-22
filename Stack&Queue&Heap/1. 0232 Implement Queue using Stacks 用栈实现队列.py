@@ -7,7 +7,7 @@ class MyQueue:
         self.stack_in = []
         self.stack_out = []
 
-    def pop(self) -> int:
+    def push(self) -> int:
          """
          有新元素进来
          """
