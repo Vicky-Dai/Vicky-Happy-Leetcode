@@ -5,7 +5,7 @@
 from collections import deque
 directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 def bfs(grid, visited, x, y):
-    que = deque([])
+    que = deque([])#？？？
     que.append
     visited[x][y] = True
     while que:
@@ -17,7 +17,7 @@ def bfs(grid, visited, x, y):
                 continue #越界跳过
             if not visited[next_x][next_y] and grid[next_x][next_y] == 1: #没有visit过并且是陆地
                 visited[next_x][next_y] = True
-                que.append((next_x, next_y))
+                que.append((next_x, next_y)) #？？？？
 
 def main():
     n, m = map(int, input().split())

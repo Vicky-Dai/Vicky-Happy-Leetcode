@@ -19,6 +19,8 @@ class Solution:
         
         result = 1 + min(leftDepth, rightDepth)
         return result
-
+# 这道题4.中间及最后返回值就很明显，要分三种情况，但是也没有脱离二叉树递归的结构
     def minDepth(self, root):
         return self.getDepth(root)
+        #leftDepth 和 rightDepth 是通过递归调用计算得到的，必须在递归调用后才能准确得出左右子树的深度。
+#如果提前判断是否有子树为空，会导致在计算深度时，递归尚未完成，数据不完整。

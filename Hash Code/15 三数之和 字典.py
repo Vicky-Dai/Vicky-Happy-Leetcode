@@ -12,11 +12,11 @@ class Solution:
             d = {}
             for j in range(i+1, len(nums)):
                 if j > i+2 and nums[j] == nums[j-1] == nums[j-2]: #三元组元素b去重
-                    continue
-                c = 0 - (nums[i] + nums[j])
+                    continue # 三元组元素b去重  这里为什么要三个元素去重？？？？？
+                c = 0 - (nums[i] + nums[j]) 
                 if c in d:
                     result.append([nums[i], nums[j], c])
-                    d.pop(c)
+                    d.pop(c) # 三元组元素c去重
                 else:
                     d[nums[j]] = j
         return result
