@@ -6,7 +6,7 @@ FROM + JOIN：
 WHERE：
 
 在生成的中间表基础上，过滤不符合条件的行。
-GROUP BY：
+GROUP BY： tips在 MySQL 中，GROUP BY 子句确实可以使用 SELECT 子句中的别名。这是 MySQL 的一个特性
 
 按指定列对数据进行分组，形成分组后的数据集合。
 HAVING：

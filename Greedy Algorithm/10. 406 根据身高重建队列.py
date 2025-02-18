@@ -1,3 +1,4 @@
+#本题有两个维度，h和k，看到这种题目一定要想如何确定一个维度，然后再按照另一个维度重新排列。
 #和分糖果一样，两个维度一定要一个维度一个维度去考虑，进行解耦  
 class Solution:
     def reconstructQueue(self, people: list[list[int]]) -> list[list[int]]:
