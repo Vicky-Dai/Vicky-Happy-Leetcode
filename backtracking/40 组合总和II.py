@@ -2,9 +2,6 @@
 #conception树层去重，树枝去重（不需要）同一层的递归中：不产生重复的组合。不同层之间：允许使用相同的元素。 
 #树层去重要排序
 
-
-
-
 class Solution:
 
 
@@ -15,7 +12,7 @@ class Solution:
 
         for i in range(startIndex, len(candidates)):
             if i > startIndex and candidates[i] == candidates[i - 1]:  #去除重复组合 #也就是说，当 i 为 0 时，这个条件为 False，不会执行后面的判断，因此不会导致 i - 1 超出范围。
-                continue
+                continue #注意一定是i>startIndex,这样保证树层去重，树枝不去重  因为树枝每次递归进来都是从都开始，startIndex都是要用的
 
             if total + candidates[i] > target:
                 break

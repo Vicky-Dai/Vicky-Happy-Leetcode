@@ -24,3 +24,23 @@ class Solution:
 那么只要从上到下去遍历，遇到 cur节点是数值在[p, q]区间中则一定可以说明该节点cur就是p 和 q的公共祖先。 那问题来了，一定是最近公共祖先吗？
 此时节点5是不是最近公共祖先？ 如果 从节点5继续向左遍历，那么将错过成为p的祖先， 如果从节点5继续向右遍历则错过成为q的祖先。
 所以当我们从上向下去递归遍历，第一次遇到 cur节点是数值在[q, p]区间中，那么cur就是 q和p的最近公共祖先。 """
+
+# 我自己的风格：先判断是否需要返回值（不需要就是traverse能解决，需要就是分治法），再判断需要什么递归顺序（前中后）（这一点决定了中的处理逻辑放在哪里），然后考虑最后一次终止条件  中间和最后的终止条件
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if not root:
+            return None
+        return self.findLCA(root, p, q)
+    def findLCA(self, root, p, q):
+        if root == q or root == p or root is None:
+            return root
+        left = self.findLCA(root.left, p, q)
+        right = self.findLCA(root.right, p,q)
+        if not left and right:
+            return right
+        if not right and left:
+            return left
+        if left and right:
+            return root
+        

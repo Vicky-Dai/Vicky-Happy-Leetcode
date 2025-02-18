@@ -1,4 +1,4 @@
-# 迭代法 前序
+# 迭代法 后序
 #遍历和处理节点的逻辑是分开的
 from TreeNode import TreeNode
 

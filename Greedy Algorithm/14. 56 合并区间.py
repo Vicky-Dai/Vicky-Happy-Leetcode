@@ -1,3 +1,4 @@
+""" 时间复杂度：nlogn """
 class Solution:
     def merge(self, intervals):
         result = []

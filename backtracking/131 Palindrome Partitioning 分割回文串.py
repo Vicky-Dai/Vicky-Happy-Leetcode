@@ -1,3 +1,4 @@
+""" * """
 '''
         递归用于纵向遍历
         for循环用于横向遍历
@@ -18,8 +19,8 @@ class Solution:
         #单层递归
         for i in range(start_index, len(s)): #i是一把刀    vvvvvvvvvvvvvv                                                                                                                                                                                                                                                                                                                                    
             if self.is_palindrome(s, start_index, i):  #注意这里是i, 写参数的时候，先定义形参，再根据形参写实参
-                path.append(s[start_index:i+1]) #左闭右闭
-                self.backtracking(s, i+1, path, result) # 递归纵向遍历：从下一处进行切割，判断其余是否仍为回文串
+                path.append(s[start_index:i+1]) #左闭右闭 注意这种不确定行为，要确定了再加入
+                self.backtracking(s, i+1, path, result) # 递归纵向遍历：从下一处进行切割，判断其余是否仍为回文串 上一次的切割处
                 path.pop() #回溯
 
     def is_palindrome(self, s, start: int, end: int) -> bool:

@@ -1,5 +1,6 @@
 #构造二叉搜索树的统一框架思路就是先取中间节点，然后分别给左右子树找中间节点，再分配左右，所以就是前序遍历
 #只要涉及到切割就要遵循循环不变量原则 此题采用左闭右闭
+"""时间复杂度：O（n）  """
 from TreeNode import TreeNode
 
 def traversal(self, nums: list[int], left: int, right: int) -> TreeNode:
