@@ -1,3 +1,9 @@
+""" * """
+""" 整体时间复杂度由两个主要部分组成：
+Python 使用的排序算法是 Timsort（基于 归并排序 和 插入排序 的混合算法）。Timsort 是一种稳定的排序算法，在最坏情况下的时间复杂度为 O(n log n)。
+排序部分：O(n log n)。
+DFS 遍历部分：O(n)。
+因此，整体的时间复杂度是 O(n log n)，其中 n 是机票的数量。 """
 class Solution:
     def findItinerary(self, tickets: list[list[str]]) -> list[str]:
         self.adj = {}
@@ -34,3 +40,26 @@ class Solution:
             self.dfs(v)  # we start from the new airport
 
         self.result.append(s)  # after append, it will back track to last node, thus the result list is in reversed order
+#因为每个航班 都只访问一次，所以不会出现无限循环。
+
+#纯代码版
+class Solution:
+    def findItinerary(self, tickets: List[List[str]]) -> List[str]:
+        self.adj = {}
+        tickets.sort(key=lambda x:x[1]) 
+        s = "JFK"
+        for u, v in tickets: # 似乎必须要用这个字典，因为要保证所有的机票都用完，至于怎么放，交给回溯
+            if u in self.adj:
+                self.adj[u].append(v)
+            else:
+                self.adj[u] = [v]
+        res = []
+        self.backtracking(res, s)
+        return res[::-1]
+    
+    def backtracking(self, res, s):
+        while s in self.adj and len(self.adj[s])>0:
+            v = self.adj[s][0]
+            self.adj[s].pop(0)
+            self.backtracking(res, v)
+        res.append(s)

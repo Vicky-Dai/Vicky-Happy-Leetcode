@@ -1,3 +1,4 @@
+# 双指针 时间复杂度n
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -17,3 +18,22 @@ class Solution:
            cur = temp
        return pre
     
+
+
+#递归实现 时间复杂度n
+def reverse_list(root):
+    # 递归终止条件：如果 root 或 root.next 为 None，说明已经到达链表末尾
+    if root is None or root.next is None:
+        return root
+    
+    # 递归调用，反转剩余链表
+    temp = root.next
+    node = reverse_list(root.next)
+    
+    # 断开 root 与后续节点的连接
+    root.next = None
+    
+    # 将当前 root 的下一个节点指向 root，从而实现链表反转
+    temp.next = root
+    
+    return node
