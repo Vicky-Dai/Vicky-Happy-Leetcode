@@ -28,7 +28,8 @@ def test_CompletePack_2D():
     bagWeight = 4
     num_items = len(weight)
     
-    # 初始化 dp 数组，大小为 (num_items + 1) x (bagWeight + 1)，初始值为 0
+    # 初始化 dp 数组，大小为 (num_items + 1) x (bagWeight + 1)，
+    # 初始值为 0
     dp = [[0] * (bagWeight + 1) for _ in range(num_items + 1)]
     
     # 填充 dp 数组
