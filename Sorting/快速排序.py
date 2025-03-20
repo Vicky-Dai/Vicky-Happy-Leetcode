@@ -1,3 +1,5 @@
+""" 时间复杂度O(nlogn)
+不稳定"""
 #快排确定顺序主要是先确定一个点，然后再确定其他点（这个过程递归）怎么做呢？
 #找一个初始基准（可以任意，这里选的是数组最后一个）然后把数组分成两部分，左边的比基准小，右边的比基准大
 #这里i控制的是左边数组的最后一个，j控制的是整个数组的遍历
@@ -19,6 +21,22 @@ def partition(array, l, r):
     return i + 1
 
 quick_sort(array, 0, len(array) - 1)
+
+# 另一种实现
+def quick_sort(arr):
+#递归实现，先找到终止条件
+	if len(arr)<2:
+		return arr
+	#选择arr[0]为基准元素,将arr[1:]与其进行比较
+	left, right=[],[]
+	for i in range(1,len(arr)):
+		if arr[i] <=arr[0]:
+			left.append(arr[i])
+		else:
+			right.append(arr[i])
+	#每进行一次排序，基准元素的位置已经确定，分别将小于和大于基准元素的子序列进行快排
+	return quick_sort(left)+[arr[0]]+quick_sort(right)
+
 
 
 """ 假设我们有数组 array = [1, 10, 7, 8, 9, 5]，基准值 x = 5。
