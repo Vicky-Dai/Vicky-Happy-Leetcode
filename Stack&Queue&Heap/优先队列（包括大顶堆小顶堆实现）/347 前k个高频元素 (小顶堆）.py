@@ -1,4 +1,4 @@
-#时间复杂度 O(nlogk)  如果数据集是n，只维护k个数字的堆，如果n远大于k那么这时候这种解法优势很高
+#时间复杂度 O(nlogk)  如果数据集是n，只维护k个数字的堆，如果n远大于k那么这时候这种解法优势很高 直接变成O(n)
 
 import heapq
 class Solution:

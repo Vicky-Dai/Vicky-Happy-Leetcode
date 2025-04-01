@@ -9,27 +9,27 @@
 
 # 递归方法：将大问题逐步分解成一个个小问题，先解决小问题（调用本身函数）,再解决大问题
 def recursion_merge_sort(arr):
-   #分割成不同子序列，各子序列分别再分割
-	mid=len(arr)//2
-	arr1=arr[:mid]
-	arr2=arr[mid:]
-	if len(arr1)>1:
-		arr1=recursion_merge_sort(arr1)
-	if len(arr2)>1:
-		arr2=recursion_merge_sort(arr2)
-	result=[]
-	#合并两个已经排好顺序的子序列
-	while arr1 and arr2:
-	    if arr1[0]<arr2[0]:
-		    result.append(arr1.pop(0))
+    #分割成不同子序列，各子序列分别再分割
+    mid=len(arr)//2
+    arr1=arr[:mid]
+    arr2=arr[mid:]
+    if len(arr1)>1:
+        arr1=recursion_merge_sort(arr1)
+    if len(arr2)>1:
+        arr2=recursion_merge_sort(arr2)
+    result=[]
+    #合并两个已经排好顺序的子序列
+    while arr1 and arr2:
+        if arr1[0]<arr2[0]:
+            result.append(arr1.pop(0))
         else:
             result.append(arr2.pop(0))
             
     if arr1:
-	    result=result+arr1
-	if arr2:
-	    result=result+arr2
-	return result
+        result=result+arr1
+    if arr2:
+        result=result+arr2
+    return result
 
 # 非递归方法：先解决小问题，将得到的结果替换自己本身的值（迭代），将小问题一步步合并
 def non_recursion_merge_sort(arr):
@@ -40,7 +40,7 @@ def non_recursion_merge_sort(arr):
         while low < len(arr):
             mid = low + i
             high = min(mid + i, len(arr))
-            if mid < high:  # 修正拼写错误 hight -> high
+            if mid < high:  
                 left, right = arr[low:mid], arr[mid:high]
                 # 将每个子序列进行两两比较,合并成一个有序序列
                 result = []
@@ -50,7 +50,7 @@ def non_recursion_merge_sort(arr):
                     else:
                         result.append(right.pop(0))
                 # 处理剩余部分
-                result += left or right
+                result += left or right # 是 Python 短路逻辑（short-circuit logic）的一种简写方式 
                 # 用新得到的结果替换原数组的值
                 arr[low:high] = result
             low += 2 * i

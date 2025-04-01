@@ -43,5 +43,3 @@ class MyQueue:
         return not(self.stack_in or self.stack_out)
     #not 是逻辑非运算符，用来取反。
 #如果 self.stack_in 或 self.stack_out 中有元素，or 运算会返回一个非空的列表，而 not 会将其结果取反，返回 False。
-
-  
