@@ -1,3 +1,4 @@
+# 滑动窗口
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
         s_len, p_len = len(s), len(p)
@@ -16,7 +17,7 @@ class Solution:
             ans.append(0)
 
         for i in range(s_len - p_len):
-            s_count[ord(s[i]) - 97] -= 1
+            s_count[ord(s[i]) - 97] -= 1 # 减去最左边的字符
             s_count[ord(s[i + p_len]) - 97] += 1
             
             if s_count == p_count:

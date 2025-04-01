@@ -41,7 +41,7 @@ class Solution:
                         w = i - stack[-1] - 1
                         # 体积：高乘宽
                         result += h * w
-                stack.append(i)
+                stack.append(i) # 这个非常重要！！！ 即使 i 已经触发了雨水计算，它仍然可能是未来凹槽的左边界，所以必须入栈。
         return result
 
 # 单调栈压缩版

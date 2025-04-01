@@ -27,7 +27,7 @@ def recursion_merge_sort(arr):
             
     if arr1:
 	    result=result+arr1
-	if arr2:
+    if arr2:
 	    result=result+arr2
 	return result
 
