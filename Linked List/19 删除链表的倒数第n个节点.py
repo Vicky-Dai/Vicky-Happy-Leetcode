@@ -18,7 +18,7 @@ class ListNode:
 
 class Solution:
     def removeNthFromEnd(self, head: ListNode, n:int) -> ListNode:
-        dummy_head = ListNode(0, head)
+        dummy_head = ListNode(0, head) #注意这里初始化一定要head不然出错
         f, s = dummy_head, dummy_head
 
         for i in range(n+1):

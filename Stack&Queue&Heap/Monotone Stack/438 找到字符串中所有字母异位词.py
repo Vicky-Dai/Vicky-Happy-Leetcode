@@ -9,15 +9,15 @@ class Solution:
         ans = []
         s_count = [0] * 26
         p_count = [0] * 26
-        for i in range(p_len):
-            s_count[ord(s[i]) - 97] += 1
+        for i in range(p_len): # 提前处理一下0起点，让窗口逻辑保持一致
+            s_count[ord(s[i]) - 97] += 1 # 注意写法
             p_count[ord(p[i]) - 97] += 1
 
         if s_count == p_count:
             ans.append(0)
 
-        for i in range(s_len - p_len):
-            s_count[ord(s[i]) - 97] -= 1 # 减去最左边的字符
+        for i in range(s_len - p_len): # 滑动窗口
+            s_count[ord(s[i]) - 97] -= 1  # 减去最左边的字符
             s_count[ord(s[i + p_len]) - 97] += 1
             
             if s_count == p_count:
