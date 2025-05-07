@@ -1,7 +1,27 @@
 """ * """
 #堆的操作 O(LOGK)
 #总时间复杂度是O(nlogk)
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        import heapq
+        min_heap = [] #！！！用数组实现
+        for i, node in enumerate(lists):
+            if node: # ！！！！
+                heappush(min_heap, (node.val, i, node))
 
+        dummy = ListNode(0)
+        current = dummy
+
+        while min_heap:
+            val, i, node = heappop(min_heap)
+            current.next = node
+            current = current.next
+            if node.next:
+                heappush(min_heap, (node.next.val, i, node.next))
+        return dummy.next
+    
+    
+    
 from heapq import heappush, heappop
 from typing import List, Optional
 
@@ -12,7 +32,7 @@ class ListNode:
 
     # 定义比较函数以支持堆排序
     def __lt__(self, other):
-        return self.val < other.val
+        return self.val < other.val # 这里重载了节点比较方法，heappush(min_heap, (node.val, i, node)) 比较到最后一步比较不出来的时候，需要这样一个方法来解决
 
 def mergeKLists(lists: List[Optional[ListNode]]) -> Optional[ListNode]:
     min_heap = []
@@ -20,7 +40,7 @@ def mergeKLists(lists: List[Optional[ListNode]]) -> Optional[ListNode]:
     # 初始化堆，把每个链表的头节点加入堆中
     for i, node in enumerate(lists):
         if node:  # 如果链表不为空
-            heappush(min_heap, (node.val, i, node)) #heapq 模块中的 heappush 方法将元素加入到堆中 heappush(heap, item) 将 item 插入到 heap 中，同时维持堆的性质（小顶堆或大顶堆）。
+            heappush(min_heap, (node.val, i, node)) #heapq 模块中的 heappush 方法将元素加入到堆中 heappush(heap, item) 将 item 插入到 heap 中，同时维持堆的性质（小顶堆或大顶堆）。 自动维持的是小顶堆，如果要大顶堆，需要把比较参数取负数
     
     # 定义一个哑节点，方便操作
     dummy = ListNode(0)

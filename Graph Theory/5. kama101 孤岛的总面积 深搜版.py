@@ -25,7 +25,7 @@ visited = [[False] for _ in range(n)]
 for i in range(n):
     grid.append(list(map(int, input().split())))
 
-#处理边界  把边界上的陆地都改成海洋
+#！！！！！！！！ 单独处理 处理边界  把边界上的陆地都改成海洋
 for j in range(m):
     #上边界
     if grid[0][j] == 1 and not visited[0][j]:
@@ -49,7 +49,7 @@ for i in range(n):
         dfs(grid, i, m-1)
 
 #计算孤岛面积：边界上的陆地都改成海洋了之后，还剩下的中间没访问过的陆地就是孤岛
-result = 0 # 初始化，避免使用到处理边界时产生的累加值
+result = 0 # ！！！！！！！！！初始化，避免使用到处理边界时产生的累加值
 
 for i in range(n):
     for j in range(m):

@@ -3,16 +3,16 @@
 
 class Solution:
     def search(self, nums: list[int], target: int) -> int:
-        left, right = 0, len(nums)-1
-        while left<=right: #左闭右闭 [2,2]也有意义 如果左闭右开[2,2) 就失去了意义
-            mid = (left+right)//2
-            if nums[mid] == target:
+        left, right = 0, len(nums) - 1  # 左闭右闭区间 [left, right]
+        while left <= right:  # 当 left == right 时，区间 [left, right] 仍然有效
+            mid = (left + right) // 2  # 计算中间索引
+            if nums[mid] == target:  # 找到目标值
                 return mid
-            elif nums[mid] < target:
-                left = mid-1
-            else: 
-                right = mid+1
-        return -1
+            elif nums[mid] < target:  # 目标值在右半部分
+                left = mid + 1  # 移动左边界到 mid + 1
+            else:  # 目标值在左半部分
+                right = mid - 1  # 移动右边界到 mid - 1
+        return -1  # 未找到目标值，返回 -1
 if __name__ == "__main__":
     solution = Solution()
 

@@ -37,3 +37,18 @@ def reverse_list(root):
     temp.next = root
     
     return node
+
+
+# 记录错误
+#你让 cur.next = pre，把当前节点的 next 指向了 dummy_head 开始的一段链表，这会让链表的最后一个节点指向 dummy_head，从而造成链表环，或返回的结果错误。
+
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy_head = ListNode(0, head)
+        pre, cur = dummy_head, head
+        while cur:
+            temp = cur.next
+            cur.next = pre
+            pre = cur
+            cur = temp
+        return pre

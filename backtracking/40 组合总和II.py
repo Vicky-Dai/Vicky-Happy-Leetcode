@@ -3,8 +3,6 @@
 #树层去重要排序
 
 class Solution:
-
-
     def backtracking(self, candidates, target, total, startIndex, path, result):
         if total == target:
             result.append(path[:])

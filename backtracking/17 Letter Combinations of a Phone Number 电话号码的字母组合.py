@@ -18,7 +18,7 @@ class Solution:
         if index == len(digits): #终止条件 比如 23，数组下标必须去到digits长度2才算真正结束
             self.result.append(s)
             return
-        digit = int(digits[index]) #准备材料  把字符串中的一个字母转换成int型
+        digit = int(digits[index]) #准备材料 比如 2 index是第几个字母
         letters = self.letterMap
 
         for letter in letters:

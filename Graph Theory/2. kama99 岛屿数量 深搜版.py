@@ -7,7 +7,7 @@ direction = [[0,1], [1, 0], [0, -1], [-1, 0]] #四个方向：上下左右
 def dfs(grid, visited, x, y):
     """ 对陆地进行深度优先遍历并且标记 """
     #和版本一的区别是在调用前增加判断终止条件
-    if visited[x][y] or grid[x][y] == 0: #如果已经访问过或者是海洋，就直接退出不标记
+    if visited[x][y] or grid[x][y] == 0: #！！！！两条件缺一不可 如果已经访问过或者是海洋，就直接退出不标记 
         return 
     visited[x][y] = True
 
@@ -15,7 +15,7 @@ def dfs(grid, visited, x, y):
         next_x = x + i
         next_y = y + j
         if next_x < 0 or next_x >= len(grid) or next_y < 0 or next_y >= len(grid[0]): #下标越界，太小，或者超出长度 注意等于长度也是超出（数组下标）
-            continue
+            continue #!!!!!!!!!!!!
         dfs(grid, visited, next_x, next_y) #由于递归条件判断放在了方法首部，直接使用dfs方法
 
 if __name__ == "__main__":
@@ -26,7 +26,7 @@ if __name__ == "__main__":
     for _ in range(n): #行
         grid.append(list(map(int, input().split()))) #列 实际上就是一个二维数组，每一行是一个一维数组
 
-    visited = [[False] * m for _ in range(n)] #访问表，用于标记是否访问过
+    visited = [[False] * m for _ in range(n)] #!!!!!!!!! 行和列搞清楚 访问表，用于标记是否访问过
 
     res = 0
     for i in range(n):

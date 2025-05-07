@@ -40,3 +40,4 @@ class Solution:
         res = max(leftMax, rightMax) + 1
 
         return res
+#对于计算二叉树的最大深度问题，我们可以使用后序遍历作为分治法的一种实现。

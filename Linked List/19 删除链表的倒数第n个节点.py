@@ -21,7 +21,7 @@ class Solution:
         dummy_head = ListNode(0, head) #注意这里初始化一定要head不然出错
         f, s = dummy_head, dummy_head
 
-        for i in range(n+1):
+        for i in range(n+1): #！！！！！！！！这里是n+1
             f = f.next
 
         while f:
