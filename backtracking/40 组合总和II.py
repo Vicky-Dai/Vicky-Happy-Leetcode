@@ -2,6 +2,9 @@
 #conception树层去重，树枝去重（不需要）同一层的递归中：不产生重复的组合。不同层之间：允许使用相同的元素。 
 #树层去重要排序
 
+""" 前面我们提到：要去重的是“同一树层上的使用过”，如何判断同一树层上元素（相同的元素）是否使用过了呢。
+
+如果candidates[i] == candidates[i - 1] 并且 used[i - 1] == false，就说明：前一个树枝，使用了candidates[i - 1]，也就是说同一树层使用过candidates[i - 1]。 """
 class Solution:
     def backtracking(self, candidates, target, total, startIndex, path, result):
         if total == target:

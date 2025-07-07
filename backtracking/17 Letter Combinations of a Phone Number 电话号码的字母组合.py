@@ -1,34 +1,32 @@
+# 目前这个用的是字符串记录path，增加用的+=，每次都会创建新的字符串，
 class Solution:
-    def __init__(self):
-        self.letterMap = [
+    def letterCombinations(self, digits: str) -> List[str]:
+        if not digits:
+            return []
+        self.digits_map = [
             "",
             "",
-            "abc",  # 2
-            "def",  # 3
-            "ghi",  # 4
-            "jkl",  # 5
-            "mno",  # 6
-            "pqrs", # 7
-            "tuv",  # 8
-            "wxyz"  # 9
+            "abc",
+            "def",
+            "ghi",
+            "jkl",
+            "mno",
+            "pqrs",
+            "tuv",
+            "wxyz"
         ]
-        self.result = []
-
-    def getConbinations(self, digits, index, s):
-        if index == len(digits): #终止条件 比如 23，数组下标必须去到digits长度2才算真正结束
-            self.result.append(s)
+        res = []
+        s = ""
+        self.backtracking(digits, res, "", 0)
+        return res
+    def backtracking(self, digits, res, path, index):
+        if len(path) == len(digits):
+            res.append("".join(path))
             return
-        digit = int(digits[index]) #准备材料 比如 2 index是第几个字母
-        letters = self.letterMap
-
-        for letter in letters:
-            self.getConbinations(digits, index + 1, s + letter)
-            
-
-    def letterConbnations(self, digits):
-        if len(digits) == 0:
-            return self.result
-        self.getConbinations(digits, 0, "")
-        return self.result
+        digit = int(digits[index])
+        for i in range(len(self.digits_map[digit])):
+            path += self.digits_map[digit][i]
+            self.backtracking(digits, res, path, index+1)
+            path = path[:-1]
 
 

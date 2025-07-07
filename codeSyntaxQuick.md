@@ -113,3 +113,4 @@ v = list(mapp.values())
 
 
 all(...)：这个是 Python 的内置函数，用来判断 所有条件都为真。
+            n, r = divmod(n,10) #python内置函数，divmod(x,y)返回商（x//y）和余数（x%y）通过余数获取每个位置上的值

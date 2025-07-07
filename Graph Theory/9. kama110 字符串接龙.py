@@ -21,14 +21,14 @@ if __name__ == '__main__':
 
     #use bfs
     visit = [False for i in range(n)]
-    queue = [[beginstr, 1]]
+    queue = [[beginstr, 1]]  # 这个真的很妙，用这个记录步数天然保证了，是按照层次，真的能走到了才记录，不然的话必须要记录每层q的len，然后每个跳出一层step才能+1
     while queue:
         str,step = queue.pop(0)
-        if judge(str,endstr):
+        if judge(str,endstr): # 注意这个一定不再forloop里面
             print(step+1)
             exit()
         for i in range(n):
             if visit[i]==False and judge(strlist[i],str):
                 visit[i]=True
-                queue.append([strlist[i],step+1])
+                queue.append([strlist[i],step+1]) # 这里用的step + 1也很妙，step本身是没有变的
     print(0)

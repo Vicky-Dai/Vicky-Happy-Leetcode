@@ -1,4 +1,5 @@
 #很妙的成环处理，可以作为一个模板，以后都这么处理，通过%取模来处理
+#再转一圈，因为只会被后面大的覆盖，所以不用担心覆盖到错误的值
 
 class Solution:
     def nextGreaterElements(self, nums: list[int]) -> list[int]:
