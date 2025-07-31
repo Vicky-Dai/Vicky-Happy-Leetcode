@@ -17,3 +17,5 @@ class Solution:
             if ord(w) < 97:
                 w = chr(ord(w)+32)
         return s
+
+3. minDist = [] * (n+1)  # This will create just a empty array

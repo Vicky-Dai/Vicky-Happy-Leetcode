@@ -38,3 +38,177 @@ DP 就是在图上做遍历（通常是 DAG 上），然后加上记忆化（缓
 如果你用 DFS + 记忆化（memory），就是在图中查找所有路径，并避免重复计算 —— 这就是 DP。
 
 6. binary search， 如果不是从中间切分逐渐找到目标也算bs
+
+7. 什么情况用什么数据结构
+🧠 Data Structures Overview: Features & Use Cases
+📦 1. Array / List
+Type: Ordered, indexable collection
+
+Key Features:
+
+Fast random access: O(1) by index
+
+Fixed or dynamic length (Python list is dynamic)
+
+Common Use Cases:
+
+Store ordered data
+
+Sliding window problems
+
+Prefix sum arrays
+
+Two-pointer techniques
+
+🔁 2. Stack
+Type: LIFO (Last In, First Out)
+
+Operations: push, pop, peek → all O(1)
+
+Common Use Cases:
+
+Valid parentheses
+
+Undo operations
+
+Expression evaluation (e.g., RPN)
+
+Monotonic stack (for "next greater element" types)
+
+🔄 3. Queue / Deque
+Type: FIFO (First In, First Out) or double-ended
+
+Queue: enqueue, dequeue → O(1) with collections.deque
+
+Deque: Insert/remove from both ends
+
+Common Use Cases:
+
+BFS (Breadth-First Search)
+
+Sliding window maximum
+
+Topological sort (Kahn's algorithm)
+
+Scheduling problems
+
+🧱 4. Hash Map / Dictionary (dict)
+Type: Key-value store
+
+Time Complexity: O(1) average for get, put
+
+Common Use Cases:
+
+Frequency counting
+
+Caching (e.g., LRU)
+
+Storing state or visited nodes
+
+Two-sum problems
+
+🔄 5. Defaultdict / Counter
+Type: Smart dictionary
+
+Defaultdict: Avoids key errors, auto-initializes
+
+Counter: For counting elements
+
+Common Use Cases:
+
+Grouping (e.g., anagrams)
+
+Frequency problems
+
+Multisets
+
+🔠 6. Set
+Type: Unordered collection of unique elements
+
+Time Complexity: O(1) for add, remove, and search
+
+Common Use Cases:
+
+Duplicate detection
+
+Membership checks
+
+Two-pointer or sliding window optimizations
+
+Fast lookups
+
+🌳 7. Tree / Binary Tree
+Type: Hierarchical data
+
+Variants: BST (ordered), AVL/Red-Black (balanced), Trie
+
+Common Use Cases:
+
+Hierarchical relationships (e.g., filesystems)
+
+DFS / recursion problems
+
+Parsing expressions
+
+Trie: prefix search, autocomplete
+
+🔢 8. Heap / Priority Queue
+Type: Binary heap (min-heap or max-heap)
+
+Time Complexity: O(log n) for insert and pop
+
+Common Use Cases:
+
+Top-k problems
+
+Dijkstra's algorithm
+
+Task scheduling
+
+Median maintenance
+
+🧭 9. Graph (Adjacency List / Matrix)
+Type: Nodes + edges (can be directed/undirected)
+
+Representations:
+
+Adjacency list: space efficient (defaultdict(list))
+
+Matrix: quick edge lookup
+
+Common Use Cases:
+
+Pathfinding (BFS, DFS, Dijkstra)
+
+Cycle detection
+
+Topological sort
+
+Union-Find: connected components
+
+⚙ 10. Union-Find / Disjoint Set
+Type: Set manager for merging and finding groups
+
+Time Complexity: Nearly O(1) with path compression
+
+Common Use Cases:
+
+Cycle detection in graphs
+
+Kruskal’s MST
+
+Connected components
+
+Network connectivity
+
+💬 Bonus: When to Think of a Data Structure?
+Problem Pattern	Try Using
+"I need fast lookups"	set, dict
+"I need to maintain order"	list, deque, heap
+"I need to process in order added"	queue, deque (BFS)
+"I need to undo / reverse quickly"	stack
+"I need top/bottom k values"	heap, Counter.most_common()
+"I need to manage dependencies"	graph + topological sort
+"I need groupings"	defaultdict(list) or Union-Find
+"I need to search by prefix"	Trie
+

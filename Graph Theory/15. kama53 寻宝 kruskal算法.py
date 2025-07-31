@@ -54,3 +54,39 @@ if __name__ == "__main__":
     
     result_val = kruskal(v, edges)
     print(result_val)
+
+# 我自己的写法
+class UnionFind:
+    def __init__(self, v):
+        self.father = list(range(v+1))
+    
+    def find(self, u):
+        if u != self.father[u]:
+            self.father[u] = self.find(self.father[u])
+        return self.father[u]
+    
+    def join(self, u, v):
+        u = self.find(u)
+        v = self.find(v)
+        if u != v:
+            self.father[v] = u
+
+def main():
+    v, e = map(int, input().strip().split())
+    uf = UnionFind(v)
+    edges = []
+    for _ in range(e):
+        x, y, w = map(int, input().strip().split())
+        edges.append((w, x, y))
+    edges.sort()
+    result = 0
+    for edge in edges:
+        w, x, y = edge # ！！！！ w放前面为了排序
+        if uf.find(x) != uf.find(y):
+            uf.join(x, y)
+            result += w
+    print(result)
+
+if __name__ == "__main__":
+    main()
+
