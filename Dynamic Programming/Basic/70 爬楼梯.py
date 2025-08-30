@@ -1,6 +1,6 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        if n <= 1:
+        if n <= 1: # first think of special cases
             return n
         
         dp = [0] * (n + 1)
