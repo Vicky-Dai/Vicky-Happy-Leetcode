@@ -16,7 +16,7 @@ class Solution:
         
         for num in nums:
             pre += num
-            if pre - k in mp:
+            if pre - k in mp:  # 严格对应着一个连续子数组 [j..i] 的和是 k
                 count += mp[pre - k]
             mp[pre] += 1
         

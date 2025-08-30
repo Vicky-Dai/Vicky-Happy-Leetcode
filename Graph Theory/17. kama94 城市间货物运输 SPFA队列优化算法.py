@@ -29,3 +29,30 @@ def main():
 
 if __name__ == "__main__":
     print(main())
+
+# 我自己写的
+from collections import deque
+
+def main():
+    n, m = map(int, input().strip().split())
+    edges = []
+    grid = [[] for _ in range(n + 1)]  # 初始化图的邻接表
+    for _ in range(m):
+        s, e, v = map(int, input().strip().split())
+        grid[s].append((e, v))  # 将边添加到邻接表中
+    minDist = [float('inf')] * (n + 1)
+    minDist[1] = 0
+    q = deque()
+    q.append(1)  
+    while q:
+        cur = q.popleft()
+        for e, v in grid[cur]:
+            minDist[e] = min(minDist[e], minDist[cur] + v)
+            q.append(e)
+    if minDist[n] == float('inf'):
+        print("unconnected")
+    else:
+        print(minDist[n])
+
+if __name__ == "__main__":
+    main()

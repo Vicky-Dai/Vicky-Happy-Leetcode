@@ -9,8 +9,9 @@ class Solution:
         ans = [-q[0][0]]
         for i in range(k, n):
             heapq.heappush(q, (-nums[i], i))
-            while q[0][1] <= i - k:
-                heapq.heappop(q)
+            while q[0][1] <= i - k: # ！！！！！ 注意等号
+                heapq.heappop(q) #我们只关心堆顶元素是不是在窗口内。 堆里确实可能存在“已过期”的元素
             ans.append(-q[0][0])
         
         return ans
+# heapq.heappop() 是从下标 0（也就是堆顶）弹出元素的，不是从右边！

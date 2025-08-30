@@ -3,7 +3,7 @@ from collections import deque, defaultdict
 
 def topological_sort(n, edges):
     inDegree = [0] * n  #记录每个文件的入度
-    umap = defaultdict(list) #记录文件依赖关系 #它创建了一个名为 umap 的字典，其中每个键的默认值是一个空列表 (list)。
+    umap = defaultdict(list) #记录文件依赖关系 #它创建了一个名为 umap 的字典，其中每个值的默认值是一个空列表 (list)。
 
     #构建图和入度表
     for s, t in edges:

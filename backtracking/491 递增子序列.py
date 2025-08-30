@@ -21,10 +21,10 @@ class Solution:
         usedt = set() #注意set的位置，本题树层去重，树枝不去重。在for和递归结合体里面到底哪里是层哪里是枝？for循环带领的当前递归：栈临时元素就是一层（横着点数，注意只在一个子树里），也就是上一个递归下面的几个结果
         #而树枝是竖着一直递归往下走，在这里，set要放在for之前递归之内，保证每次递归都重新刷新一遍set
         for i in range(start_index, len(nums)):
-            if (path and nums[i] < path[-1]) or nums[i] in usedt: #注意这里加括号
+            if (path and nums[i] < path[-1]) or nums[i] in usedt: #注意这里加括号 #加不加 i > start_index 都能通过，因为set每次递归都会更新
                 continue
             usedt.add(nums[i])
             path.append(nums[i])
             self.backtracking(nums, path, result, i+1)
-            path.pop
+            path.pop()
 

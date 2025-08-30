@@ -12,7 +12,7 @@ class Solution:
             for j in range(i+1, n):
                 if nums[j] > target and target > 0:
                     break
-                if j > i+1 and nums[j] == nums[j-1]:
+                if j > i+1 and nums[j] == nums[j-1]: #!!注意 > i+1
                     continue
                 left, right = j+1, n-1
                 while left < right:

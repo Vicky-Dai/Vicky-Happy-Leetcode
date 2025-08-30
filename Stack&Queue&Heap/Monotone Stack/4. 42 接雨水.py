@@ -11,7 +11,7 @@ class Solution:
         雨水的宽度是 凹槽右边的下标 - 凹槽左边的下标 - 1（因为只求中间宽度）
         '''
         # stack储存index，用于计算对应的柱子高度
-        stack = [0]
+        stack = [0] #！！！！！！！！！！！
         result = 0
         for i in range(1, len(height)):
             # 情况一
@@ -19,7 +19,8 @@ class Solution:
                 stack.append(i)
 
             # 情况二
-            # 当当前柱子高度和栈顶一致时，左边的一个是不可能存放雨水的，所以保留右侧新柱子
+            # 当当前柱子高度和栈顶一致时，左边的一个是不可能存放雨水的，所以保留右侧新柱子假如有一段连续的相同高度柱子，只有最右边的柱子才有可能和右侧更高的柱子围成“凹槽”存水。
+            #如果保留左边的下标，宽度会被提前截断，导致雨水体积计算不准确。
             # 需要使用最右边的柱子来计算宽度  其实想等情况入zhan出zhan都可以
             elif height[i] == height[stack[-1]]:
                 stack.pop()
@@ -32,7 +33,8 @@ class Solution:
                     # 栈顶就是中间的柱子：储水槽，就是凹槽的底部
                     mid_height = height[stack[-1]]
                     stack.pop()
-                    if stack:
+                    if stack: # 在接雨水问题中，只有当弹出的柱子左右都有边界时，才能形成“凹槽”存水。
+#如果栈空，说明没有左边界，这个点自然无法作为凹槽底部存水，所以直接跳过是对的，不会影响结果。
                         right_height = height[i]
                         left_height = height[stack[-1]]
                         # 两侧的较矮一方的高度 - 凹槽底部高度
@@ -61,3 +63,24 @@ class Solution:
                     result += h * w
             stack.append(i)
         return result
+
+
+# 双指针
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        leftheight, rightheight = [0]*len(height), [0]*len(height)
+
+        leftheight[0]=height[0]
+        for i in range(1,len(height)):
+            leftheight[i]=max(leftheight[i-1],height[i]) # “在 i 的左边（或右边）所有柱子中，最高的那个柱子的高度。”
+        rightheight[-1]=height[-1]
+        for i in range(len(height)-2,-1,-1):
+            rightheight[i]=max(rightheight[i+1],height[i])
+
+        result = 0
+        for i in range(0,len(height)):
+            summ = min(leftheight[i],rightheight[i])-height[i]
+            result += summ
+        return result
+    
+#这个方法本质就是利用每个位置左右边界的最高柱子限制水位，从而计算当前位置可以积多少水。

@@ -1,6 +1,6 @@
 import heapq
 
-class Edge:
+class Edge:  # convenient to record the edge destination and its value
     def __init__(self, to, val):
         self.to = to
         self.val = val
@@ -11,17 +11,17 @@ def dijkstra(n, m, edges, start, end):
     for p1, p2, val in edges:
         grid[p1].append(Edge(p2, val))
 
-    minDist = [float('inf')] * (n+1)
+    minDist = [float('inf')] * (n+1) #!!!!!!!!! initialize the distance array with infinity
     visited = [False] * (n+1)
 
     pq = []
     heapq.heappush(pq, (0, start))
-    minDist[start] = 0
+    minDist[start] = 0 # !!!!!!!!!! remember this!
 
     while pq:
         cur_dist, cur_node = heapq.heappop(pq)
 
-        if visited[cur_node]:
+        if visited[cur_node]: # !!!!!!!!!don't forget to pass the visited one
             continue
         visited[cur_node] = True #找到距离最近的node，并且标为visited
 

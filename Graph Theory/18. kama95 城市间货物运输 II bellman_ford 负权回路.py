@@ -55,3 +55,36 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# 我自己写的
+def main():
+    n, m = map(int, input().strip().split())
+    edges = []
+    for _ in range(m):
+        s, e, v = map(int, input().strip().split())
+        edges.append((s, e, v))
+    minDist = [float('inf')] * (n + 1)
+    minDist[1] = 0
+
+    # Bellman-Ford主循环，松弛n-1次
+    for _ in range(n - 1):
+        for s, e, v in edges:
+            if minDist[s] != float('inf') and minDist[e] > minDist[s] + v:
+                minDist[e] = minDist[s] + v
+
+    # 第n次松弛，判断负权回路
+    flag = False
+    for s, e, v in edges:
+        if minDist[s] != float('inf') and minDist[e] > minDist[s] + v:
+            flag = True
+
+    if flag:
+        print('circle')
+    elif minDist[n] == float('inf'):
+        print('unconnected')
+    else:
+        print(minDist[n])
+
+if __name__ == "__main__":
+    main()

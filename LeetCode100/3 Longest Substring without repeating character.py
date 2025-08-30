@@ -1,4 +1,5 @@
-# 左右指针窗口
+# 懒惰双指针+哈希表
+# 懒惰双指针的原因是左指针并没有真正的挪动，实际上很多时候懒惰很有用
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:

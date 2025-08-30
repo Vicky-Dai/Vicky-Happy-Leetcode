@@ -115,3 +115,16 @@ print(unicode_code)  # 输出: 97
 4. 字符串
 char.isdigit()是否只包含数字
 char.isalpha()
+
+
+# 优先队列
+heapq.heappop() 是从下标 0（也就是堆顶）弹出元素的，不是从右边！
+
+方法名	作用说明	示例代码片段	备注
+heapq.heapify(iterable)	将列表原地转换成最小堆	heapq.heapify(data)	原地修改，不返回新列表
+heapq.heappush(heap, item)	向堆中添加元素，保持堆结构	heapq.heappush(data, 3)	时间复杂度 O(log n)
+heapq.heappop(heap)	弹出并返回最小元素	min_val = heapq.heappop(data)	堆必须非空
+heapq.heappushpop(heap, item)	先推入再弹出最小元素，效率高于先 push 后 pop	val = heapq.heappushpop(data, item)	时间复杂度 O(log n)
+heapq.heapreplace(heap, item)	先弹出最小元素再推入新值	val = heapq.heapreplace(data, item)	与上一个方法顺序相反
+heapq.nlargest(n, iterable)	返回前 n 大的元素（按降序）	heapq.nlargest(3, nums)	非堆结构也可使用
+heapq.nsmallest(n, iterable)	返回前 n 小的元素（按升序）	heapq.nsmallest(2, nums)	可用于快速找极小值

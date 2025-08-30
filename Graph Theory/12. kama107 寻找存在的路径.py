@@ -48,3 +48,18 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+""" 
+main直接用函数写：
+1. 类和实例方法的调用
+在 Python 里，类的方法（如 def is_same(self, u, v):）必须通过类的实例（对象）来调用，self 代表当前对象。
+如果你在类外部直接写 return self.find(u) == self.find(v)，没有 self 这个对象，代码会报错。
+2. 主流程应该用函数，不要用类
+main 通常是程序的主入口，应该写成普通函数（def main():），而不是类（class main:）。
+只有需要封装数据和行为时才用类。
+3. return 和 print 的区别
+return 是函数返回值，只有调用者能接收到。
+print 是直接输出到标准输出，OJ/ACM模式下评测系统只能看到 print 的内容。
+4. 实例化对象后调用方法
+你应该先创建对象（如 uf = UnionFind(n)），然后用 uf.is_same(u, v) 这样的方法调用。 """

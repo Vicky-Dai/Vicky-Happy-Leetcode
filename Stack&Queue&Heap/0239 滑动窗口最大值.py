@@ -32,3 +32,32 @@ class Solution:
             que.push(nums[i]) #顺序很重要 先出再进 否则顺序容易出错
             result.append(que.front())
         return result
+    
+
+# 我的写法
+# 保存下标而不是值：我们需要知道一个数是否已经滑出窗口。值是无法告诉我们它在哪个位置的，但下标可以轻松判断。
+from collections import deque
+from typing import List
+
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        q = deque()  # 存储的是索引
+        res = []
+        
+        for i in range(len(nums)):
+            # 1. 移除窗口外的索引
+            if q and q[0] < i - k + 1:
+                q.popleft()
+            
+            # 2. 保持队列单调递减：将比当前值小的都移除
+            while q and nums[i] > nums[q[-1]]:
+                q.pop()
+            
+            # 3. 加入当前索引
+            q.append(i)
+            
+            # 4. 记录结果（从第 k-1 项开始）
+            if i >= k - 1:
+                res.append(nums[q[0]])
+        
+        return res

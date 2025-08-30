@@ -10,7 +10,7 @@ class Solution:
             # 将当前元素推入堆
             heapq.heappush(min_heap, num)
             
-            # 如果堆的大小超过 k，移除堆顶元素
+            # ！！！！顺序 先push再pop 如果堆的大小超过 k，移除堆顶元素
             if len(min_heap) > k:
                 heapq.heappop(min_heap)
 
