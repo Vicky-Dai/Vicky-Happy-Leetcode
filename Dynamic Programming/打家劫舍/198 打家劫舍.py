@@ -18,7 +18,7 @@ class Solution:
         dp[1] = max(nums[0], nums[1]) #将dp第二个元素设置为第一二个房屋中金额较大的
 
         #遍历剩余的房屋
-        for i in range(2, len(nums)):
+        for i in range(2, len(nums)): # Sometimes we may jump two houses
             #对于每个房屋，选择抢劫当前房屋和抢劫前一个房屋的最大金额
             dp[i] = max(dp[i-1], dp[i-2]+nums[i])
 

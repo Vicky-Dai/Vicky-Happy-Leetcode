@@ -9,7 +9,7 @@ class Solution:
             else: 
                 right = mid
         tl = left
-        if tl == len(nums) or nums[tl] != target:
+        if tl == len(nums) or nums[tl] != target: #????????
             return [-1, -1]
             
         left, right = 0, len(nums)

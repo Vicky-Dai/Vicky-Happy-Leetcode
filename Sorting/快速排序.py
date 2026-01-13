@@ -17,7 +17,7 @@ def partition(array, l, r):
         if array[j] <= x:
             i += 1
             array[i], array[j] = array[j], array[i]
-    array[i + 1], array[r] = array[r], array[i+1]
+    array[i + 1], array[r] = array[r], array[i+1] # 交换基准值和i+1的位置
     return i + 1
 
 quick_sort(array, 0, len(array) - 1)

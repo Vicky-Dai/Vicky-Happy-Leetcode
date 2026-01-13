@@ -13,7 +13,7 @@ class Solution:
             path.pop()
         if cur.right:
             self.traversal(cur.right, path, result)
-            path.pop
+            path.pop()
 
     def binaryTreePaths(self, root):
         result = []  #就定义一次  所以必须放在主函数里面
