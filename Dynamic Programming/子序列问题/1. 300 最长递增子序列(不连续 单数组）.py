@@ -1,3 +1,7 @@
+""" 对于每个位置 i：
+    找出所有 j<i 且 nums[j]<nums[i] 中 dp[j] 最大的
+    dp[i] = dp[j] + 1 """
+# Time O(n2)
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         if len(nums) <= 1:

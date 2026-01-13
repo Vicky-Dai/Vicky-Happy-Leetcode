@@ -10,6 +10,8 @@
 
 # 这道题初始化比较有意思，最初的状态其实是从中间来的，也就是i和j相同的时候
 
+# 奇数的情况已经在初始化的时候处理了，所以只需要考虑偶数的情况 这也是为什么dp[i][j] = max(dp[i+1][j], dp[i][j-1]) 这里不用+1
+
 class Solution:
     def longestPalindromeSubseq(self, s: str) -> int:
         dp = [[0] * len(s) for _ in range(len(s))]

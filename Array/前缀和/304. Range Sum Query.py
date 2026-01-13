@@ -6,7 +6,7 @@ class NumMatrix:
     def __init__(self, matrix: List[List[int]]):
         n = len(matrix)
         m = len(matrix[0])
-        self.preSum = [[0]*(m+1) for _ in range(n+1)]
+        self.preSum = [[0]*(m+1) for _ in range(n+1)] #！！！！！行列不要反
         for i in range(1, n+1):
             for j in range(1, m+1):
                 self.preSum[i][j] = self.preSum[i-1][j] + self.preSum[i][j-1] + matrix[i-1][j-1] - self.preSum[i-1][j-1]
@@ -15,4 +15,5 @@ class NumMatrix:
 
     def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
         return self.preSum[row2+1][col2+1] - self.preSum[row2+1][col1] - self.preSum[row1][col2+1] + self.preSum[row1][col1]
+        #preSum是不包含当前元素的，所以如果要找包含matrix中当前元素的前缀和需要+1， 反之不变
 

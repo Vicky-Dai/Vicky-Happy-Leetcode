@@ -80,8 +80,12 @@ len(s) 获取集合大小 print(len(s))
 for 遍历 遍历集合 for item in s: print(item)
 🔹 比喻：集合像是一个“去重后的购物篮”，不支持索引访问，但可以判断是否存在某个商品。
 
-📌 4. 字典（Dictionary）
-字典是键值对存储结构，支持 键值操作、查询和修改。
+📌 4. 哈希表（Hash Table）
+哈希表是一种通过哈希函数将键映射到值的数据结构，支持快速查找、插入和删除。
+
+🔹 4.1 字典（Dictionary）- 键值对哈希表
+字典是Python中最常用的哈希表实现，支持键值对存储。
+
 初始化：
 普通 dict mapper = dict() 或 mapper = {}
 defaultdict mapper = collections.defaultdict(int) #!!!! 注意初始化
@@ -99,7 +103,70 @@ keys() 获取所有键 d.keys()
 values() 获取所有值 d.values()
 items() 获取所有键值对 d.items()
 for 遍历 遍历字典 for k, v in d.items(): print(k, v)
-🔹 比喻：字典像是一个“购物清单”，你可以根据商品名称（键）查找价格（值），也可以修改或删除商品。
+
+🔹 4.2 集合（Set）- 键哈希表
+集合是只存储键的哈希表，适用于去重和集合运算。
+
+操作 方法 作用 示例
+增（Create） add(x) 添加元素 x s.add(5)
+update(iterable) 批量添加元素 s.update([1, 2, 3])
+删（Delete） remove(x) 删除 x，若不存在报错 s.remove(3)
+discard(x) 删除 x，不存在不会报错 s.discard(4)
+pop() 随机删除一个元素 x = s.pop()
+clear() 清空集合 s.clear()
+改（Update） ❌ 集合是无序的，不支持索引修改 ❌
+查（Read） in 关键字 判断元素是否在集合中 if 3 in s:
+len(s) 获取集合大小 print(len(s))
+for 遍历 遍历集合 for item in s: print(item)
+
+🔹 4.3 数组实现的哈希表
+使用数组和哈希函数实现自定义哈希表：
+
+```python
+class HashTable:
+    def __init__(self, size=1000):
+        self.size = size
+        self.table = [[] for _ in range(size)]  # 使用链表法处理冲突
+    
+    def _hash(self, key):
+        return hash(key) % self.size
+    
+    def put(self, key, value):
+        hash_key = self._hash(key)
+        for item in self.table[hash_key]:
+            if item[0] == key:
+                item[1] = value
+                return
+        self.table[hash_key].append([key, value])
+    
+    def get(self, key):
+        hash_key = self._hash(key)
+        for item in self.table[hash_key]:
+            if item[0] == key:
+                return item[1]
+        return None
+    
+    def remove(self, key):
+        hash_key = self._hash(key)
+        for i, item in enumerate(self.table[hash_key]):
+            if item[0] == key:
+                del self.table[hash_key][i]
+                return
+```
+
+🔹 4.4 哈希表特性对比
+数据结构 冲突处理 查找复杂度 适用场景
+字典（dict） 开放寻址法 O(1)平均 键值对存储、快速查找
+集合（set） 开放寻址法 O(1)平均 去重、成员判断
+数组哈希表 链表法/开放寻址法 O(1)平均 自定义哈希表、学习哈希原理
+
+🔹 4.5 重要注意事项
+1. 字典的键必须是可哈希的（不可变类型）
+2. 集合中的元素必须是可哈希的
+3. 哈希表的时间复杂度是平均O(1)，最坏情况O(n)
+4. Python的dict和set使用开放寻址法处理冲突
+
+🔹 比喻：哈希表像是一个"智能索引系统"，通过计算"商品编码"（哈希值）快速定位到"商品位置"（存储位置）。
 
 注意：
 mapp = {"a": 2, "b": 3}
@@ -113,6 +180,12 @@ v = list(mapp.values())
 元组（tuple） ✅ 是 ❌ 不可变 适合存储不可修改的数据
 集合（set） ❌ 无序 ✅ 可变 适合去重和集合运算
 字典（dict） ❌ 无序 ✅ 可变 适合键值存储、快速查找
+
+🔹 哈希表家族对比
+数据结构 存储内容 冲突处理 查找复杂度 适用场景
+字典（dict） 键值对 开放寻址法 O(1)平均 键值对存储、快速查找
+集合（set） 仅键 开放寻址法 O(1)平均 去重、成员判断
+数组哈希表 键值对 链表法/开放寻址法 O(1)平均 自定义哈希表、学习哈希原理
 
 all(...)：这个是 Python 的内置函数，用来判断 所有条件都为真。
 n, r = divmod(n,10) #python 内置函数，divmod(x,y)返回商（x//y）和余数（x%y）通过余数获取每个位置上的值

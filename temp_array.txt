@@ -1,0 +1,27 @@
+﻿ 4.3 数组作为哈希表
+在算法题中，数组经常用作简单的哈希表：
+
+常用语法：
+# 字符计数（ASCII）
+char_count = [0] * 26  # 小写字母a-z
+char_count[ord('a') - ord('a')] += 1  # 统计字符'a'
+
+# 数字计数
+num_count = [0] * 10  # 数字0-9
+num_count[5] += 1  # 统计数字5
+
+# 布尔标记
+visited = [False] * n  # 访问标记
+visited[0] = True
+
+# 频率统计
+freq = [0] * 1001  # 假设数字范围0-1000
+freq[num] += 1
+
+# 前缀和/差分数组
+prefix = [0] * (n + 1)
+prefix[i] = prefix[i-1] + nums[i-1]
+
+# 滑动窗口计数
+window_count = [0] * 26
+window_count[ord(s[left]) - ord('a')] -= 1

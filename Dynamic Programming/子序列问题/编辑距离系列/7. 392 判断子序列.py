@@ -4,7 +4,7 @@
 
 class Solution:
     def isSubsequence(self, s:str, t:str) -> bool:
-        dp = [[0] * (len(t)+1) for _ in range(len(s)+1)] #这里注意+1   行是s 列是t，只有t可以缩短（或理解为切割）
+        dp = [[0] * (len(t)+1) for _ in range(len(s)+1)] #这里注意+1，为了方便不用单独处理第一行和第一列的情况  行是s 列是t，只有t可以缩短（或理解为切割）
         for i in range(1, len(s)+1):
             for j in range(1, len(t)+1):
                 if s[i-1] == t[j-1]:

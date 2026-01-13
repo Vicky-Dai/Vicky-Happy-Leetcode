@@ -212,3 +212,9 @@ Problem Pattern	Try Using
 "I need groupings"	defaultdict(list) or Union-Find
 "I need to search by prefix"	Trie
 
+9. for....:
+    if :
+        .....
+    ....
+注意if 加else是只有else的时候做后面
+如果不加else 那么每次for循环都要做
