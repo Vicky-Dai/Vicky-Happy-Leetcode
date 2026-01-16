@@ -14,3 +14,44 @@ class Solution:
 """ 如果前一段能完成拆分
 并且后一段是一个字典词
 那么整个前 j 个字符都能拆分 """
+
+
+"""
+DP
+Bottom UP
+"""
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        dp = [False] * (len(s)+1)
+        dp[len(s)] = True # 递归转化成dp，termination condition
+        # if i == len(s): return True 变成初始化条件
+
+        for i in range(len(s)-1, -1, -1): # 递归回来收集，所以逆向
+            for word in wordDict:
+                if i + len(word) <= len(s):
+                    if s[i:i+len(word)] == word:
+                        dp[i] = dp[i+len(word)]
+                    if dp[i]:  # 这个一定要注意，相当于遇到直接返回，不然结果可能被后面不可行的改变
+                        break
+        return dp[0]
+
+""" 
+Recursion
+ t*m^n   n
+"""
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+
+        def dfs(i):
+            if i == len(s):
+                return True
+
+            for w in wordDict:
+                if ((i + len(w)) <= len(s) and
+                     s[i : i + len(w)] == w
+                ):
+                    if dfs(i + len(w)):
+                        return True
+            return False
+
+        return dfs(0)
