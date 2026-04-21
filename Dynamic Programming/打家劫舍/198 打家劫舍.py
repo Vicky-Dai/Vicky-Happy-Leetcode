@@ -23,3 +23,18 @@ class Solution:
             dp[i] = max(dp[i-1], dp[i-2]+nums[i])
 
         return dp[-1]  #返回偷到的最大金额
+
+
+""" 递归树
+robFrom(0)
+├── robFrom(1)
+│   ├── robFrom(2)
+│   │   ├── robFrom(3)
+│   │   │   ├── robFrom(4)
+│   │   │   │   ├── robFrom(5)
+│   │   │   │   └── robFrom(6)
+│   │   │   └── robFrom(5)
+│   │   └── robFrom(4)
+│   └── robFrom(3)
+└── robFrom(2)
+ """

@@ -32,7 +32,7 @@ def main():
             if 0 <= nx < n and 0 <= ny < m and not vis[nx][ny] and grids[nx][ny] == tribe:
                 dfs(nx, ny, current_idx)
     
-    # 标记所有连通块
+    # 标记所有连通块: 巧妙，一次只标记一个
     for i in range(n):
         for j in range(m):
             if not vis[i][j]:
@@ -42,8 +42,8 @@ def main():
     # ans[i]存储第i个连通块周围不同的邻接部族
     ans = [set() for _ in range(idx)]
     
-    # 统计每个连通块周围的邻接部族
-    for i in range(n):
+    # 统计每个连通块周围的邻接部族 
+    for i in range(n): # 必须把这个 tribe 里的点都检查到，才能确保不漏。
         for j in range(m):
             current_idx = connect[i][j]
             current_tribe = grids[i][j]
